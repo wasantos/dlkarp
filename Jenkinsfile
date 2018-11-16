@@ -11,9 +11,9 @@ pipeline{
         stage('SCM - GitHub'){
             steps{
                 dir('projeto'){
-                    sh 'echo -e "## Innersource Checkout ##"'
+                    sh 'echo -e "## Checkout ##"'
                     git branch: 'master',
-                    credentialsId: '9a54ae94-57c6-46ae-9ce0-4974a758182d',
+                    credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
                     url: 'https://github.com/wasantos/dlkarp.git'
                 }
             }  

@@ -19,10 +19,10 @@ pipeline{
             }  
         }
 
-        stage('Build Datalake'){
+        stage('Build Dlkarp ARP Scala '){
             steps{
                 dir('arp'){
-                    sh 'echo -e "## Build Datalake ##"'
+                    sh 'echo -e "## Build ARP Scala ##"'
                     sh 'sbt clean assembly'
                 }
             }

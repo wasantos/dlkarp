@@ -40,5 +40,31 @@ pipeline{
                 }
             }
         }
+
+            stage('Clean S3'){
+            steps{
+                dir('projeto/arp/target/scala-2.11'){
+                    sh 'aws --version'
+                    sh 'aws s3 ls'
+                    sh 'pwd'
+                    sh 'ls -lrt'
+                    sh 'aws s3 rm s3://repo-lambda-teste/*.jar'
+                }
+            }
+        }
+        
+        
+        stage('Publisher on S3'){
+            steps{
+                dir('projeto/arp/target/scala-2.11'){
+                    sh 'aws --version'
+                    sh 'aws s3 ls'
+                    sh 'pwd'
+                    sh 'ls -lrt'
+                    sh 'aws s3 cp *.jar s3://repo-lambda-teste/'
+                }
+            }
+        }    
+        
     }
 }

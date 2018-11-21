@@ -48,7 +48,7 @@ pipeline{
                     sh 'aws s3 ls'
                     sh 'pwd'
                     sh 'ls -lrt'
-                    sh 'aws s3 rm s3://repo-lambda-teste/*.jar'
+                    sh 'aws s3 rm s3://repo-lambda-teste/ARPscala-assembly-0.1.jar'
                 }
             }
         }

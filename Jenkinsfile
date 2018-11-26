@@ -1,4 +1,6 @@
 pipeline{
+    ENV = env.GIT_BRANCH
+    println ENV
     agent { label 'slave_local' }
         stages{     
             stage('Clean Workspace'){

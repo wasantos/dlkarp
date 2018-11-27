@@ -12,7 +12,7 @@ pipeline{
             steps{
                 dir('projeto'){ 
                     checkout scm
-                    sh '${BRANCH_NAME}'
+                    sh 'echo ${BRANCH_NAME}'
                     sh '''
                         echo ${BRANCH_NAME}
                         case ${BRANCH_NAME} in

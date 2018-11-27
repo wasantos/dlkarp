@@ -1,22 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- Sign out
-19
-0 1 TDFabrica/dlkbigdata Private
-forked from tecnologiadigital/dlkbigdata
- Code  Pull requests 0  Projects 0  Wiki  Insights
-dlkbigdata/Jenkinsfile
-9187eb0  an hour ago
-@wasantos wasantos Update Jenkinsfile
-@claudiamp @wasantos
-    
-67 lines (59 sloc)  1.81 KB
 pipeline{
     agent any
     stages{     

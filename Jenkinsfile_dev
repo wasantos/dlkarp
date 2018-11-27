@@ -12,22 +12,15 @@ pipeline{
             steps{
                 dir('projeto'){ 
                     checkout scm
-                    sh 'echo $BRANCH_NAME'
-                    switch("${BRANCH_NAME}") {
-                        case "develop":
-                            result = "dev"
-                            break
-                        case ["master", "support/${version}".toString()]:
-                            result = "list"
-                            break
-                        case "support/${version}":
-                            result = "sup"
-                            break
-                        default:
-                            result = "def"
-                            break
-                        }
-                        echo "${result}"
+                    sh '''
+                        case ${BRANCH_NAME} in                                                                                                ✔  9318  15:44:10 
+                            master)     ENV="prd"       ;;
+                            develop)    ENV="dev"       ;;
+                            *)          ENV="default"   ;;
+                        esac
+                        echo ${ENV} "01"  
+                    '''
+                    sh 'echo ${ENV} "02"' 
                 }
             }  
         }

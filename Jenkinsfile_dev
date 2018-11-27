@@ -10,12 +10,24 @@ pipeline{
 
         stage('SCM GitHub - Checkout'){
             steps{
-                dir('projeto'){
+                dir('projeto'){ 
                     checkout scm
-                    sh 'pwd'
-                    sh 'ls -lrt'
-                    sh 'echo TESTE DEVELOP'
                     sh 'echo $BRANCH_NAME'
+                    switch("${BRANCH_NAME}") {
+                        case "develop":
+                            result = "dev"
+                            break
+                        case ["master", "support/${version}".toString()]:
+                            result = "list"
+                            break
+                        case "support/${version}":
+                            result = "sup"
+                            break
+                        default:
+                            result = "def"
+                            break
+                        }
+                        echo "${result}"
                 }
             }  
         }

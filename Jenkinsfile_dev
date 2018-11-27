@@ -12,6 +12,8 @@ pipeline{
             steps{
                 dir('projeto'){
                     checkout scm
+                    sh 'pwd'
+                    sh 'ls -lrt'
                     sh 'echo $BRANCH_NAME'
                 }
             }  

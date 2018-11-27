@@ -13,11 +13,11 @@ pipeline{
                 dir('projeto'){ 
                     checkout scm
                     sh '''
-                        case ${BRANCH_NAME} in                                                                                                ✔  9318  15:44:10 
-                            master)     ENV="prd"       ;;
-                            develop)    ENV="dev"       ;;
-                            *)          ENV="default"   ;;
-                        esac
+                        case ${BRANCH_NAME} in
+														master)     ENV="prd"       ;;
+														develop)    ENV="dev"       ;;
+														*)          ENV="default"   ;;
+												esac
                         echo ${ENV} "01"  
                     '''
                     sh 'echo ${ENV} "02"' 

@@ -14,6 +14,7 @@ pipeline{
                     checkout scm
                     sh 'pwd'
                     sh 'ls -lrt'
+                    sh 'echo TESTE DEVELOP'
                     sh 'echo $BRANCH_NAME'
                 }
             }  

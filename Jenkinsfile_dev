@@ -16,9 +16,9 @@ pipeline{
                     sh '''
                         echo ${BRANCH_NAME}
                         case ${BRANCH_NAME} in
-														master)     ENV="prd"       ;;
-														develop)    ENV="dev"       ;;
-														*)          ENV="default"   ;;
+														master)     export ENV="prd"       ;;
+														develop)    export ENV="dev"       ;;
+														*)          export ENV="default"   ;;
 												esac
                         echo ${ENV} "01"  
                     '''

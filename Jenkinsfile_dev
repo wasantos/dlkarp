@@ -16,13 +16,13 @@ pipeline{
                     sh '''
                         echo ${BRANCH_NAME}
                         case ${BRANCH_NAME} in
-														master)     export ENV="prd"       ;;
-														develop)    export ENV="dev"       ;;
-														*)          export ENV="default"   ;;
+														master)     ENV="prd"       ;;
+														develop)    ENV="dev"       ;;
+														*)          ENV="default"   ;;
 												esac
-                        echo ${ENV} "01"  
+                        echo ${ENV} > environment.tmp  
                     '''
-                    sh 'echo ${ENV} "02"' 
+                    sh 'echo `cat environment.tmp` 02' 
                 }
             }  
         }

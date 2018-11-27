@@ -1,0 +1,85 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ Sign out
+19
+0 1 TDFabrica/dlkbigdata Private
+forked from tecnologiadigital/dlkbigdata
+ Code  Pull requests 0  Projects 0  Wiki  Insights
+dlkbigdata/Jenkinsfile
+9187eb0  an hour ago
+@wasantos wasantos Update Jenkinsfile
+@claudiamp @wasantos
+    
+67 lines (59 sloc)  1.81 KB
+pipeline{
+    agent any
+    stages{     
+        stage('Clean Workspace'){
+            steps{
+                sh 'echo -e "## Limpando o Workspace ##"'
+                deleteDir()
+            }
+        }
+
+        stage('SCM GitHub - Checkout'){
+            steps{
+                dir('projeto'){
+                    checkout scm
+                }
+            }  
+        }
+        
+        //stage('Find directory to build'){
+        //    steps{
+        //        dir('projeto'){
+        //            sh 'echo -e "## Find directory to build ##"'
+        //            sh 'pwd'
+        //            sh 'tree'
+        //        }
+        //    }
+        //}
+        
+
+        //stage('Build Dlkbigdata - dl-scala'){
+        //    steps{
+        //        dir('projeto/dl-scala'){
+        //            sh 'echo -e "## Build dl-scala ##"'
+        //            sh 'pwd'
+        //            sh 'sbt clean assembly'
+        //        }
+        //    }
+        //}
+        
+        //stage('Clean S3'){
+        //    steps{
+        //        dir('projeto/dl-scala/target/scala-2.11'){
+        //            sh 'aws --version'
+        //            sh 'aws s3 ls'
+        //            sh 'pwd'
+        //            sh 'ls -lrt'
+        //            sh 'aws s3 rm s3://belc-bigdata-functional-dlk-qas/analitico/jars/dl-scala-assembly-0.1.jar'
+        //           /* sh 'aws s3 rm sh 'aws s3 rm s3://repo-lambda-teste/dl-scala-assembly-0.1.jar'*/
+        //        }
+        //    }
+        //}
+        
+        
+        //stage('Publisher on S3'){
+        //    steps{
+        //        dir('projeto/dl-scala/target/scala-2.11'){
+        //            sh 'aws --version'
+        //            sh 'aws s3 ls'
+        //            sh 'pwd'
+        //            sh 'ls -lrt'
+        //            sh 'aws s3 cp *.jar s3://belc-bigdata-functional-dlk-qas/analitico/jars/'
+        //        }
+        //    }
+        //}    
+    }
+}

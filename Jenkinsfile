@@ -6,9 +6,7 @@ pipeline{
             steps{
                 sh '''
                 echo -e "## Limpando o Workspace ##"
-                echo -e  'Pulling...' + env.BRANCH_NAME
-                teste=${env.BRANCH_NAME}
-                echo $teste             
+                echo ${env.BRANCH_NAME}           
                 '''
                 deleteDir()
             }

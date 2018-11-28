@@ -13,10 +13,7 @@ pipeline{
 
         stage('SCM GitHub - Checkout'){
             steps{
-                def getGitBranchName() {
-                    return scm.branches[0].name
-                     }
-                                
+                                               
                 dir('projeto'){
                     sh 'echo -e "## SCM GitHub - Checkout ##"'
                     git branch: 'master',

@@ -1,7 +1,7 @@
 pipeline{
     
     agent { label 'slave_local' }
-        tages{     
+        stages{     
             stage('Clean Workspace'){
             steps{
                 sh '''

@@ -1,13 +1,14 @@
 pipeline{
-    
+    def getGitBranchName() {
+    return scm.branches[0].name
+}
     agent { label 'slave_local' }
         stages{     
             stage('Clean Workspace'){
             steps{
                 sh '''
-                echo -e "## Limpando o Workspace ##"
-                echo ${env.BRANCH_NAME}           
-                '''
+                echo -e "## Limpando o Workspace ##
+                   '''
                 deleteDir()
             }
         }

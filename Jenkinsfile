@@ -1,12 +1,15 @@
 pipeline{
-    echo 'Pulling...' + env.BRANCH_NAME
-    teste=${env.BRANCH_NAME}
-    echo teste
+    
     agent { label 'slave_local' }
         tages{     
             stage('Clean Workspace'){
             steps{
-                sh 'echo -e "## Limpando o Workspace ##"'
+                sh '''
+                echo -e "## Limpando o Workspace ##"
+                echo -e  'Pulling...' + env.BRANCH_NAME
+                teste=${env.BRANCH_NAME}
+                echo teste             
+                '''
                 deleteDir()
             }
         }

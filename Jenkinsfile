@@ -44,7 +44,7 @@ pipeline{
             }
         }
 
-         stage('Clean S3'...){
+         stage('Clean S3'){
             steps{
                 dir('projeto/arp/target/scala-2.11'){
                     sh 'aws --version'

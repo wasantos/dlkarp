@@ -1,7 +1,8 @@
 pipeline{
     def getGitBranchName() {
     return scm.branches[0].name
-}
+    }
+    
     agent { label 'slave_local' }
         stages{     
             stage('Clean Workspace'){
@@ -71,4 +72,5 @@ pipeline{
             }
         }    
     }
+  }
 }

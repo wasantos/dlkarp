@@ -1,8 +1,6 @@
 pipeline{
-    ENV=(env.GIT_BRANCH)
-    println ENV
     agent { label 'slave_local' }
-        stages{     
+        tages{     
             stage('Clean Workspace'){
             steps{
                 sh 'echo -e "## Limpando o Workspace ##"'

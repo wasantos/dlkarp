@@ -84,7 +84,8 @@ pipeline{
                     sh 'pwd'
                     sh 'ls -lrt'
                     sh 'aws s3 cp *.jar s3://belcorp-bigdata-functional-dlk-$flow/'
-                }
-            }
-        }    
-    }
+           }
+        }
+     }
+  }
+}

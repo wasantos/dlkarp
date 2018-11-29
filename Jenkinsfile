@@ -21,8 +21,7 @@ pipeline{
                     git branch: 'master',
                     credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
                     url: 'https://github.com/wasantos/dlkarp.git',
-                    	String flow = env.BRANCH_NAME
-	 		switch(flow){  
+                    	switch(env.BRANCH_NAME){  
 			case "master":
   			flow = "prd"
  	        	break

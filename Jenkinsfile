@@ -32,7 +32,8 @@ pipeline{
     			default:
      			flow="Not Found"
     			}
-			println flow  
+			println flow
+			sh 'echo flow'
 		    }
 		}
             }  

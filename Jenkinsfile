@@ -19,6 +19,14 @@ pipeline{
                     git branch: 'master',
                     credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
                     url: 'https://github.com/wasantos/dlkarp.git'
+                    sh '''
+                    case ${BRANCH_NAME} in
+	                master)     FLOW="prd"       ;;
+	                develop)    FLOW="dev"       ;;
+	                *)          FLOW="default"   ;;
+	                esac
+                    echo ${FLOW} > flow.tmp  
+                    '''
               }
             }  
          }

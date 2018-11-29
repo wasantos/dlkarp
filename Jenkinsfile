@@ -24,16 +24,16 @@ pipeline{
                     	String flow ="${BRANCH_NAME}"
 	 		switch(flow){  
 			case "master":
-  			flow="PRD"
+  			flow ="prd"
  	        	break
    	  		case "development":
-    			flow="QAS"
+    			flow ="qas"
        			break
     			default:
-     			flow="Not Found"
+     			flow ="NotFound"
     			}
 			println flow
-			sh 'echo flow'
+			sh 'echo $flow'
 		    }
 		}
             }  
@@ -67,7 +67,7 @@ pipeline{
                     sh 'aws s3 ls'
                     sh 'pwd'
                     sh 'ls -lrt'
-                    sh 'aws s3 rm s3://repo-lambda-teste/ARPscala-assembly-0.1.jar'
+                    sh 'aws s3 rm s3://belcorp-bigdata-functional-dlk-$flow/ARPscala-assembly-0.1.jar'
                 }
             }
         }
@@ -80,7 +80,7 @@ pipeline{
                     sh 'aws s3 ls'
                     sh 'pwd'
                     sh 'ls -lrt'
-                    sh 'aws s3 cp *.jar s3://repo-lambda-teste/'
+                    sh 'aws s3 cp *.jar s3://belcorp-bigdata-functional-dlk-$flow/'
                 }
             }
         }    

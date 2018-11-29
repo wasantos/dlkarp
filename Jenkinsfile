@@ -25,7 +25,7 @@ pipeline{
                     credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
                     url: 'https://github.com/wasantos/dlkarp.git', */
 			
-                    	/*flow = env.BRANCH_NAME*/
+                    	/*flow = env.BRANCH_NAME
 			switch (env.BRANCH_NAME){  
 			case "master":
   			flow = "prd"
@@ -37,11 +37,10 @@ pipeline{
      			flow ="NotFound"
     			}
 			println flow
-			sh 'echo $flow'
+			sh 'echo $flow' */
 		    }
 		}
-            }  
-         }
+            }
 
         stage('Find directory to build'){
             steps{

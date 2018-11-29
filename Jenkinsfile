@@ -1,7 +1,9 @@
 pipeline{
       
     agent { label 'slave_local' }
-        stages{     
+        
+	stages{
+
             stage('Clean Workspace'){
             steps{
                 sh '''
@@ -19,20 +21,20 @@ pipeline{
                     git branch: 'master',
                     credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
                     url: 'https://github.com/wasantos/dlkarp.git',
-                    def call(String flow){
-			flow=${BRANCH_NAME},
-			println flow
+                    	String flow ="${BRANCH_NAME}"
+	 		switch(flow){  
+			case "master":
+  			flow="PRD"
+ 	        	break
+   	  		case "development":
+    			flow ="QAS"
+       			break
+    			default:
+     			flow = "Not Found"
+    			}
+			println flow  
 		    }
-			sh 'echo -e $flow'
-			/* sh '''
-                    case ${BRANCH_NAME} in
-	                master)     FLOW="prd"       ;;
-	                develop)    FLOW="dev"       ;;
-	                *)          FLOW="default"   ;;
-	                esac
-                    echo ${FLOW} > flow.tmp  
-                    ''' */
-              }
+		}
             }  
          }
 

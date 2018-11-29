@@ -17,7 +17,21 @@ pipeline{
                 }
             }  
         }
-        
+           
+         	/*flow = env.BRANCH_NAME
+			switch (env.BRANCH_NAME){  
+			case "master":
+  			flow = "prd"
+ 	        	break
+   	  		case "development":
+    			flow = "qas"
+       			break
+    			default:
+     			flow ="NotFound"
+    			}
+			println flow
+			sh 'echo $flow' */
+                    
         //stage('Find directory to build'){
         //    steps{
         //        dir('projeto'){

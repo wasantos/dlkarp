@@ -21,13 +21,14 @@ pipeline{
 		checkout scm
 		
 		sh '''
+		   echo ${BRANCH_NAME} "origem"		
   		   case ${BRANCH_NAME} in
 			master)     	 FLOW="prd"       ;;
 	   		development)     FLOW="qas"       ;;
 	    		*)           	 FLOW="default"   ;;
 		   esac
     			echo ${FLOW} > flow.tmp
-    			echo cat flow.tmp
+    			cat flow.tmp
 		   '''
 		  }
 		}
@@ -58,7 +59,7 @@ pipeline{
             steps{
                 dir('projeto/arp/target/scala-2.11'){
                 sh '''
-		flow="cat ../../../flow.tmp"
+		flow=`cat ../../../flow.tmp`
 		pwd
 		ls -lrt
  		aws --version
@@ -74,7 +75,7 @@ pipeline{
             steps{
                 dir('projeto/arp/target/scala-2.11'){
 		    sh '''
-		    flow="cat ../../../flow.tmp"
+		    flow=`cat ../../../flow.tmp`
                     aws --version
                     aws s3 ls
                     pwd

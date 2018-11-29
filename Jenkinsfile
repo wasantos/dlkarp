@@ -18,7 +18,7 @@ pipeline{
                                                
                 dir('projeto'){
                     
-		 echo 'Pulling...' + env.BRANCH_NAME
+		 sh 'echo 'Pulling...' + env.BRANCH_NAME'
         	 checkout scm
 			/*sh 'echo -e "## SCM GitHub - Checkout ##"'
                     git branch: 'master',

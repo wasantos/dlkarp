@@ -18,14 +18,22 @@ pipeline{
                                                
                 dir('projeto'){
                  
-		    sh 'echo -e "## SCM GitHub - Checkout ##"'
-       		    git branch: 'master',
-                    credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
-                    url: 'https://github.com/wasantos/dlkarp.git', */
-			
-                  }
+		sh 'echo -e "## SCM GitHub - Checkout ##"'
+       		git branch: 'master',
+                credentialsId: 'd319fe2f-a4b7-4e8c-8b30-2803211f33c4',
+                url: 'https://github.com/wasantos/dlkarp.git',
+		sh '''
+  		   case ${BRANCH_NAME} in
+			master)     	 FLOW="prd"       ;;
+	   		development)     FLOW="qas"       ;;
+	    		*)           	 FLOW="default"   ;;
+		   esac
+    			echo ${FLOW} > flow.tmp
+    			echo cat flow.tmp
+		   '''
+		  }
 		}
-            }
+             }
 
         stage('Find directory to build'){
             steps{
@@ -51,11 +59,14 @@ pipeline{
          stage('Clean S3'){
             steps{
                 dir('projeto/arp/target/scala-2.11'){
-                    sh 'aws --version'
-                    sh 'aws s3 ls'
-                    sh 'pwd'
-                    sh 'ls -lrt'
-                    sh 'aws s3 rm s3://belcorp-bigdata-functional-dlk-$flow/ARPscala-assembly-0.1.jar'
+                sh '''
+		flow='cat ../../../flow.tmp'
+		pwd
+		ls -lrt
+ 		aws --version
+                aws s3 ls
+                aws s3 rm s3://belcorp-bigdata-functional-dlk-$flow/ARPscala-assembly-0.1.jar
+		'''
                 }
             }
         }
@@ -64,11 +75,14 @@ pipeline{
         stage('Publisher on S3'){
             steps{
                 dir('projeto/arp/target/scala-2.11'){
-                    sh 'aws --version'
-                    sh 'aws s3 ls'
-                    sh 'pwd'
-                    sh 'ls -lrt'
-                    sh 'aws s3 cp *.jar s3://belcorp-bigdata-functional-dlk-$flow/'
+		    sh '''
+		    flow='cat ../../../flow.tmp'
+                    aws --version
+                    aws s3 ls
+                    pwd
+                    ls -lrt
+                    aws s3 cp *.jar s3://belcorp-bigdata-functional-dlk-$flow/
+		    '''
            }
         }
      }

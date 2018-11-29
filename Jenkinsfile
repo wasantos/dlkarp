@@ -27,10 +27,10 @@ pipeline{
   			flow="PRD"
  	        	break
    	  		case "development":
-    			flow ="QAS"
+    			flow="QAS"
        			break
     			default:
-     			flow = "Not Found"
+     			flow="Not Found"
     			}
 			println flow  
 		    }

@@ -23,6 +23,7 @@ pipeline{
 			flow=${BRANCH_NAME},
 			println flow
 		    }
+			sh 'echo -e $flow'
 			/* sh '''
                     case ${BRANCH_NAME} in
 	                master)     FLOW="prd"       ;;

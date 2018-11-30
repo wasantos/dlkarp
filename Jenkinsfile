@@ -1,7 +1,6 @@
 pipeline{
       
     agent { label 'slave_local'
-	  
 	import jenkins.model.*
 	import hudson.model.*
 	import jenkins.*

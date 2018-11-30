@@ -11,7 +11,7 @@ pipeline{
 	  }
         
 	stages{
-		def fluxo = {env.BRANCH_NAME}
+		def fluxo=env.BRANCH_NAME
 
             stage('Clean Workspace'){
             steps{

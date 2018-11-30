@@ -8,7 +8,7 @@ pipeline{
             stage('Clean Workspace'){
             steps{
                 sh '''
-                echo -e "## Limpando o Workspace ##"
+                echo -e "## Limpando o Workspace ###"
                    '''
 		deleteDir()
             }

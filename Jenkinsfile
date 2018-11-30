@@ -18,6 +18,7 @@ pipeline{
                                                
                 dir('projeto'){
                 
+		echo 'Pulling...' + env.BRANCH_NAME
 		checkout scm
 		
 		sh '''

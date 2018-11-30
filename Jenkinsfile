@@ -1,11 +1,8 @@
 pipeline{
       
     agent { label 'slave_local'}
-        
-	stages{
-		def fluxo = (env.BRANCH_NAME)
-
-            stage('Clean Workspace'){
+       stages{
+	 stage('Clean Workspace'){
             steps{
                 sh '''
                 echo -e "## Limpando o Workspace ###"

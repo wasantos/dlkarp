@@ -3,7 +3,7 @@ pipeline{
     agent { label 'slave_local'}
         
 	stages{
-		def fluxo = env.BRANCH_NAME
+		def fluxo = (env.BRANCH_NAME)
 
             stage('Clean Workspace'){
             steps{

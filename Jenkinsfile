@@ -1,6 +1,14 @@
 pipeline{
       
-    agent { label 'slave_local' }
+    agent { label 'slave_local'
+	  
+	import jenkins.model.*
+	import hudson.model.*
+	import jenkins.*
+	import hudson.*
+	import java.lang.*
+	 
+	  }
         
 	stages{
 		def fluxo = {env.BRANCH_NAME}

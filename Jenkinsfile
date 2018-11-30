@@ -3,6 +3,7 @@ pipeline{
     agent { label 'slave_local' }
         
 	stages{
+		def fluxo = env.BRANCH_NAME
 
             stage('Clean Workspace'){
             steps{
@@ -17,7 +18,7 @@ pipeline{
             steps{
                                                
                 dir('projeto'){
-		def fluxo = env.BRANCH_NAME                
+		               
 		echo 'Pulling...' + env.BRANCH_NAME
 		checkout scm
 		
